@@ -59,8 +59,8 @@ pub use alloc::{boxed, format, string, vec};
 
 #[cfg(feature = "alloc")]
 pub mod collections {
-	pub use alloc::collections::*;
-	pub use hashbrown::{HashMap, HashSet};
+    pub use alloc::collections::*;
+    pub use hashbrown::{HashMap, HashSet};
 }
 
 #[doc(no_inline)]

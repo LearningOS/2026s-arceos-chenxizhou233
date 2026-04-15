@@ -80,4 +80,6 @@ arceos_api = { workspace = true }
 axio = "0.1"
 axerrno = "0.1"
 kspin = "0.1"
-hashbrown = { version = "0.14", default-features = false, features = ["ahash"], optional = true }
+hashbrown = { version = "0.14", default-features = false, features = [
+    "ahash",
+], optional = true }
