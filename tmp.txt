@@ -1,0 +1,584 @@
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+    [92;1mBuilding[0m App: print_with_color, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/print_with_color/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/print_with_color//print_with_color_riscv64-qemu-virt.elf --strip-all -O binary exercises/print_with_color//print_with_color_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/print_with_color//print_with_color_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187m[WithColor]: Hello, Arceos!
+[0mHas color
+Has Hello, Arceos!
+print_with_color pass
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+    [92;1mBuilding[0m App: ramfs_rename, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/ramfs_rename/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.elf --strip-all -O binary exercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187mCreate '[0m[38;2;57;197;187m/tmp/f1[0m[38;2;57;197;187m' and write [[0m[38;2;57;197;187mhello[0m[38;2;57;197;187m] ...
+[0m[38;2;57;197;187mRename '[0m[38;2;57;197;187m/tmp/f1[0m[38;2;57;197;187m' to '[0m[38;2;57;197;187m/tmp/f2[0m[38;2;57;197;187m' ...
+[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m675987[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187maxfs_vfs[0m[38;2;57;197;187m:[0m[38;2;57;197;187m160[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m33[0m[38;2;57;197;187mm[0m[38;2;57;197;187m[AxError::[0m[38;2;57;197;187mUnsupported[0m[38;2;57;197;187m][0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m691495[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187maxruntime::lang_items[0m[38;2;57;197;187m:[0m[38;2;57;197;187m5[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mpanicked at [0m[38;2;57;197;187mexercises/ramfs_rename/src/main.rs[0m[38;2;57;197;187m:[0m[38;2;57;197;187m51[0m[38;2;57;197;187m:[0m[38;2;57;197;187m9[0m[38;2;57;197;187m:
+[0m[38;2;57;197;187mError: [0m[38;2;57;197;187mOperation not supported[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0mramfs_rename fault
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+    [92;1mBuilding[0m App: alt_alloc, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/alt_alloc/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/alt_alloc//alt_alloc_riscv64-qemu-virt.elf --strip-all -O binary exercises/alt_alloc//alt_alloc_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/alt_alloc//alt_alloc_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m0[0m[38;2;57;197;187m86537[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187maxruntime::lang_items[0m[38;2;57;197;187m:[0m[38;2;57;197;187m5[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mpanicked at [0m[38;2;57;197;187m/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/modules/bump_allocator/src/lib.rs[0m[38;2;57;197;187m:[0m[38;2;57;197;187m29[0m[38;2;57;197;187m:[0m[38;2;57;197;187m9[0m[38;2;57;197;187m:
+[0m[38;2;57;197;187mnot yet implemented[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0malt_alloc default
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+    [92;1mBuilding[0m App: support_hashmap, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/support_hashmap/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/support_hashmap//support_hashmap_riscv64-qemu-virt.elf --strip-all -O binary exercises/support_hashmap//support_hashmap_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/support_hashmap//support_hashmap_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187mRunning memory tests...
+[0m[38;2;57;197;187mtest_hashmap() OK!
+[0m[38;2;57;197;187mMemory tests run OK!
+[0msupport_hashmap default
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+make[1]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload'
+make -C origin
+make[2]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/origin'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/origin'
+make -C hello_c
+make[2]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/hello_c'
+riscv64-linux-musl-gcc -static hello.c -o hello
+make[2]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/hello_c'
+make[1]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload'
+File 'payload/mapfile_c/mapfile' doesn't exist!
+    [92;1mBuilding[0m App: sys_map, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/sys_map/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/sys_map//sys_map_riscv64-qemu-virt.elf --strip-all -O binary exercises/sys_map//sys_map_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/sys_map//sys_map_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m780784[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m871327[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m979634[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m1[0m[38;2;57;197;187m.[0m[38;2;57;197;187m108856[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m1[0m[38;2;57;197;187m.[0m[38;2;57;197;187m171170[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m:[0m[38;2;57;197;187m2[0m[38;2;57;197;187m [0m[38;2;57;197;187maxruntime::lang_items[0m[38;2;57;197;187m:[0m[38;2;57;197;187m5[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mpanicked at [0m[38;2;57;197;187mexercises/sys_map/src/main.rs[0m[38;2;57;197;187m:[0m[38;2;57;197;187m37[0m[38;2;57;197;187m:[0m[38;2;57;197;187m21[0m[38;2;57;197;187m:
+[0m[38;2;57;197;187mCannot load app! [0m[38;2;57;197;187mNotFound[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0msys_mmap default
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+mkfs.fat 4.2 (2021-01-31)
+make[1]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload'
+make -C origin
+make[2]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/origin'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/origin'
+make -C hello_c
+make[2]: Entering directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/hello_c'
+riscv64-linux-musl-gcc -static hello.c -o hello
+make[2]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload/hello_c'
+make[1]: Leaving directory '/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/payload'
+File 'payload/skernel2/skernel2' doesn't exist!
+    [92;1mBuilding[0m App: simple_hv, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/simple_hv/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/target --release  --features "axstd/log-level-warn"[0m
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/simple_hv//simple_hv_riscv64-qemu-virt.elf --strip-all -O binary exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin -drive if=pflash,file=/home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name               : riscv-virtio,qemu
+Platform Features           : medeleg
+Platform HART Count         : 1
+Platform HART Protection    : pmp
+Platform IPI Device         : aclint-mswi
+Platform Timer Device       : aclint-mtimer @ 10000000Hz
+Platform Console Device     : uart8250
+Platform HSM Device         : ---
+Platform PMU Device         : ---
+Platform Reboot Device      : syscon-reboot
+Platform Shutdown Device    : syscon-poweroff
+Platform Suspend Device     : ---
+Platform CPPC Device        : ---
+Firmware Base               : 0x80000000
+Firmware Size               : 321 KB
+Firmware RW Offset          : 0x40000
+Firmware RW Size            : 65 KB
+Firmware Heap Offset        : 0x47000
+Firmware Heap Size          : 37 KB (total), 0 KB (reserved), 12 KB (used), 23 KB (free)
+Firmware Scratch Size       : 4096 B (total), 1464 B (used), 2632 B (free)
+Runtime SBI Version         : 3.0
+Standard SBI Extensions     : ipi,pmu,srst,sse,hsm,rfnc,fwft,time,base,legacy,dbcn,dbtr
+Experimental SBI Extensions : none
+
+Domain0 Name                : root
+Domain0 Boot HART           : 0
+Domain0 HARTs               : 0*
+Domain0 Region00            : 0x0000000080040000-0x000000008005ffff M: (F,R,W) S/U: ()
+Domain0 Region01            : 0x0000000080000000-0x000000008003ffff M: (F,R,X) S/U: ()
+Domain0 Region02            : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region03            : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region04            : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region05            : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06            : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07            : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address        : 0x0000000080200000
+Domain0 Next Arg1           : 0x0000000087e00000
+Domain0 Next Mode           : S-mode
+Domain0 SysReset            : yes
+Domain0 SysSuspend          : yes
+
+Boot HART ID                : 0
+Boot HART Domain            : root
+Boot HART Priv Version      : v1.12
+Boot HART Base ISA          : rv64imafdch
+Boot HART ISA Extensions    : sstc,zicntr,zihpm,zicboz,zicbom,sdtrig,svadu
+Boot HART PMP Count         : 16
+Boot HART PMP Granularity   : 2 bits
+Boot HART PMP Address Bits  : 54
+Boot HART MHPM Info         : 16 (0x0007fff8)
+Boot HART Debug Triggers    : 2 triggers
+Boot HART MIDELEG           : 0x0000000000001666
+Boot HART MEDELEG           : 0x0000000000f4b509
+[38;2;57;197;187m
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+[0m[38;2;57;197;187m
+[0m[38;2;57;197;187march = [0m[38;2;57;197;187mriscv64[0m[38;2;57;197;187m
+platform = [0m[38;2;57;197;187mriscv64-qemu-virt[0m[38;2;57;197;187m
+target = [0m[38;2;57;197;187mriscv64gc-unknown-none-elf[0m[38;2;57;197;187m
+smp = [0m[38;2;57;197;187m1[0m[38;2;57;197;187m
+build_mode = [0m[38;2;57;197;187mrelease[0m[38;2;57;197;187m
+log_level = [0m[38;2;57;197;187mwarn[0m[38;2;57;197;187m
+
+[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m778535[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m868602[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m.[0m[38;2;57;197;187m972810[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m1[0m[38;2;57;197;187m.[0m[38;2;57;197;187m104619[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m [0m[38;2;57;197;187mfatfs::dir[0m[38;2;57;197;187m:[0m[38;2;57;197;187m139[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mIs a directory[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0m[38;2;57;197;187mHypervisor ...
+[0m[38;2;57;197;187mapp: [0m[38;2;57;197;187m/sbin/skernel2[0m[38;2;57;197;187m
+[0m[38;2;57;197;187m[[0m[38;2;57;197;187m37[0m[38;2;57;197;187mm[[0m[38;2;57;197;187m [0m[38;2;57;197;187m [0m[38;2;57;197;187m1[0m[38;2;57;197;187m.[0m[38;2;57;197;187m172923[0m[38;2;57;197;187m [0m[38;2;57;197;187m0[0m[38;2;57;197;187m:[0m[38;2;57;197;187m2[0m[38;2;57;197;187m [0m[38;2;57;197;187maxruntime::lang_items[0m[38;2;57;197;187m:[0m[38;2;57;197;187m5[0m[38;2;57;197;187m] [0m[38;2;57;197;187m[[0m[38;2;57;197;187m31[0m[38;2;57;197;187mm[0m[38;2;57;197;187mpanicked at [0m[38;2;57;197;187mexercises/simple_hv/src/main.rs[0m[38;2;57;197;187m:[0m[38;2;57;197;187m41[0m[38;2;57;197;187m:[0m[38;2;57;197;187m9[0m[38;2;57;197;187m:
+[0m[38;2;57;197;187mCannot load app! [0m[38;2;57;197;187mNotFound[0m[38;2;57;197;187m[m[0m[38;2;57;197;187m
+[m[0msimple_hv default
+100
