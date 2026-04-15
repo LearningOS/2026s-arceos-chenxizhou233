@@ -64,16 +64,7 @@ pub mod console {
 
     /// Write a slice of bytes to the console.
     pub fn write_bytes(bytes: &[u8]) {
-        const FG_COLOR_39C5BB: &[u8] = b"\x1b[38;2;57;197;187m";
-        const RESET_COLOR: &[u8] = b"\x1b[0m";
-
-        for c in FG_COLOR_39C5BB {
-            putchar(*c);
-        }
         for c in bytes {
-            putchar(*c);
-        }
-        for c in RESET_COLOR {
             putchar(*c);
         }
     }
