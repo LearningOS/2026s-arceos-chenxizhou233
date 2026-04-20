@@ -16,11 +16,23 @@ use allocator::{BaseAllocator, ByteAllocator, PageAllocator};
 /// When it goes down to ZERO, free bytes-used area.
 /// For pages area, it will never be freed!
 ///
-pub struct EarlyAllocator<const SIZE: usize> {}
+pub struct EarlyAllocator<const SIZE: usize> {
+    begin: usize,
+    end: usize,
+    b_pos: usize,
+    p_pos: usize,
+    count: usize,
+}
 
 impl<const SIZE: usize> EarlyAllocator<SIZE> {
     pub const fn new() -> Self {
-        Self {}
+        Self {
+            begin: 0,
+            end: 0,
+            b_pos: 0,
+            p_pos: 0,
+            count: 0,
+        }
     }
 }
 
