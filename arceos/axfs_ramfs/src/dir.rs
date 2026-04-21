@@ -67,6 +67,11 @@ impl DirNode {
         children.remove(name);
         Ok(())
     }
+
+    /// File Operation
+    pub fn rename(&mut self, old_name: &str, new_name: &str) -> VfsResult {
+        let mut children = self.children.write();
+    }
 }
 
 impl VfsNodeOps for DirNode {
