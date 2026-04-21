@@ -69,8 +69,22 @@ impl DirNode {
     }
 
     /// File Operation
-    pub fn rename(&mut self, old_name: &str, new_name: &str) -> VfsResult {
+    pub fn rename_node(&self, old_name: &str, new_name: &str) -> VfsResult {
         let mut children = self.children.write();
+        if old_name == new_name {
+            return children
+                .contains_key(old_name)
+                .then_some(())
+                .ok_or(VfsError::NotFound);
+        }
+
+        if children.contains_key(new_name) {
+            return Err(VfsError::AlreadyExists);
+        }
+
+        let node = children.remove(old_name).ok_or(VfsError::NotFound)?;
+        children.insert(new_name.into(), node);
+        Ok(())
     }
 }
 
@@ -167,6 +181,42 @@ impl VfsNodeOps for DirNode {
             Err(VfsError::InvalidInput) // remove '.' or '..
         } else {
             self.remove_node(name)
+        }
+    }
+
+    fn rename(&self, src_path: &str, dst_path: &str) -> VfsResult {
+        log::debug!("rename at ramfs: src={}, dst={}", src_path, dst_path);
+        let (src_name, src_rest) = split_path(src_path);
+        if let Some(src_rest) = src_rest {
+            match src_name {
+                "" | "." => self.rename(src_rest, dst_path),
+                ".." => self
+                    .parent()
+                    .ok_or(VfsError::NotFound)?
+                    .rename(src_rest, dst_path),
+                _ => {
+                    let subdir = self
+                        .children
+                        .read()
+                        .get(src_name)
+                        .ok_or(VfsError::NotFound)?
+                        .clone();
+                    subdir.rename(src_rest, dst_path)
+                }
+            }
+        } else {
+            let dst_name = dst_path
+                .trim_start_matches('/')
+                .rsplit('/')
+                .next()
+                .ok_or(VfsError::InvalidInput)?;
+            if dst_name.is_empty() || dst_name == "." || dst_name == ".." {
+                return Err(VfsError::InvalidInput);
+            }
+            if src_name.is_empty() || src_name == "." || src_name == ".." {
+                return Err(VfsError::InvalidInput);
+            }
+            self.rename_node(src_name, dst_name)
         }
     }
 

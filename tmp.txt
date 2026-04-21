@@ -180,8 +180,8 @@ log_level = warn
 
 [38;2;57;197;187mCreate '/tmp/f1' and write [hello] ...[0m
 [38;2;57;197;187mRename '/tmp/f1' to '/tmp/f2' ...[0m
-[37m[  0.669466 0 axfs_vfs:160] [33m[AxError::Unsupported][m
-[m[37m[  0.674432 0 axruntime::lang_items:5] [31mpanicked at exercises/ramfs_rename/src/main.rs:51:9:
+[37m[  0.654080 0 axfs_vfs:160] [33m[AxError::Unsupported][m
+[m[37m[  0.657642 0 axruntime::lang_items:5] [31mpanicked at exercises/ramfs_rename/src/main.rs:51:9:
 Error: Operation not supported[m
 [mramfs_rename fault
     [92;1mCreating[0m FAT32 disk image "disk.img" ...
@@ -272,9 +272,9 @@ smp = 1
 build_mode = release
 log_level = warn
 
-[37m[  0.081884 0 axruntime::lang_items:5] [31mpanicked at /home/chenxizhou233/cs/2026s-arceos-chenxizhou233/arceos/modules/bump_allocator/src/lib.rs:29:9:
-not yet implemented[m
-[malt_alloc default
+[38;2;57;197;187mRunning bump tests...[0m
+[38;2;57;197;187mBump tests run OK![0m
+alt_alloc pass
     [92;1mCreating[0m FAT32 disk image "disk.img" ...
 mkfs.fat 4.2 (2021-01-31)
     [92;1mBuilding[0m App: support_hashmap, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
@@ -466,11 +466,11 @@ smp = 1
 build_mode = release
 log_level = warn
 
-[37m[  0.740390 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  0.820303 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  0.910129 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.014680 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.069076 0:2 axruntime::lang_items:5] [31mpanicked at exercises/sys_map/src/main.rs:37:21:
+[37m[  0.749862 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.831951 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.930708 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.036797 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.087847 0:2 axruntime::lang_items:5] [31mpanicked at exercises/sys_map/src/main.rs:37:21:
 Cannot load app! NotFound[m
 [msys_mmap default
     [92;1mCreating[0m FAT32 disk image "disk.img" ...
@@ -572,13 +572,13 @@ smp = 1
 build_mode = release
 log_level = warn
 
-[37m[  0.747061 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  0.827287 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  0.923286 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.053961 0 fatfs::dir:139] [31mIs a directory[m
+[37m[  0.759551 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.838722 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.930135 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.032405 0 fatfs::dir:139] [31mIs a directory[m
 [mHypervisor ...
 app: /sbin/skernel2
-[37m[  1.105173 0:2 axruntime::lang_items:5] [31mpanicked at exercises/simple_hv/src/main.rs:41:9:
+[37m[  1.089900 0:2 axruntime::lang_items:5] [31mpanicked at exercises/simple_hv/src/main.rs:41:9:
 Cannot load app! NotFound[m
 [msimple_hv default
-200
+300

@@ -23,16 +23,8 @@ description = "RAM filesystem used by ArceOS"
 homepage = "https://github.com/arceos-org/arceos"
 documentation = "https://docs.rs/axfs_ramfs"
 readme = "README.md"
-keywords = [
-    "arceos",
-    "filesystem",
-    "ramfs",
-]
-categories = [
-    "os",
-    "no-std",
-    "filesystem",
-]
+keywords = ["arceos", "filesystem", "ramfs"]
+categories = ["os", "no-std", "filesystem"]
 license = "GPL-3.0-or-later OR Apache-2.0 OR MulanPSL-2.0"
 repository = "https://github.com/arceos-org/axfs_crates"
 
